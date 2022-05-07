@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1 style="font-size: 2rem">商品</h1>展示</h1>
+    <h1 style="font-size: 2rem">商品展示</h1>
     <div>
     <el-table :data="model" stripe style="width: 100%" class="f-center">
         <el-table-column prop="_id" label=" id " width="width">

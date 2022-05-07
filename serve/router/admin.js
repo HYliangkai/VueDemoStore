@@ -35,9 +35,6 @@ module.exports=(app)=>{
             res.send(rep)
     })
 
-
-
-
     
     app.use('/adminapi/rest/:modelname',(req,res,next)=>{
         req.model = require(`../model/${req.params.modelname}`)

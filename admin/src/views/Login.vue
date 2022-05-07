@@ -87,6 +87,7 @@ export default {
 
 .all{
   background-image: url('../assets/bimg.jpg');
+  background-position: 50% 50%;
   background-repeat: no-repeat;
     display: flex;
     // 单个组件整体居中:jc 和ai 只有多个元素的时候才用ac

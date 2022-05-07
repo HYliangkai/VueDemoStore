@@ -12,12 +12,12 @@
         <br>
         <el-select v-model="model.catagory" placeholder="请选择">
     <el-option
-      v-for="item in category"
-      :key="item._id"
-      :label="item.name"
-      :value="item._id">
+    v-for="item in category"
+    :key="item._id"
+    :label="item.name"
+    :value="item._id">
     </el-option>
-  </el-select>
+</el-select>
     </el-form-item>
 
     <el-form-item label="商品描述">
