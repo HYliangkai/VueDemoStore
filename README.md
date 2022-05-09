@@ -17,3 +17,7 @@ npm run serve
 cd ./web
 npm run serve
 ```
+### 数据库建立
+```
+mongorestore
+```
