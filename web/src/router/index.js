@@ -29,7 +29,11 @@ const routes = [
         path:'/info',
         name:'info',
         component:()=>import('../views/info')
-      }
+      },
+      { path:'/shopping/:id',
+      name:'shopping',
+      component:()=>import('../views/shopping')
+      },
     ]
   },
 

@@ -6,7 +6,7 @@
 </div>
 
 <div class="footnav d-flex ai-center p-l-2">
-     <router-link tag="a" to="/home" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">首页</router-link>
+    <router-link tag="a" to="/home" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">首页</router-link>
     <a class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">
     <el-dropdown  @command="getcategoryid">
 <span class="el-dropdown-link fs-2">
@@ -17,13 +17,13 @@
 </el-dropdown-menu>
 </el-dropdown>
     </a>
-    <router-link tag="a" to="/" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">购物车</router-link>
-    <router-link tag="a" to="/" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">充数</router-link>
+    <router-link tag="a" :to="`/shopping/${userinfo._id}`" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">购物车</router-link>
+    <router-link tag="a" to="/" class="p-x-4 fs-2" style="color:rgb(51, 51, 51);font-weight:800;text-decoration:none">退出</router-link></router-link></router-link>
 </div>
 </div>
 
 
-<router-view :key="$route.query.id"/>
+<router-view @addshopping="add" :key="$route.query.id" />
 
 
 </div>
@@ -35,7 +35,8 @@ export default {
 
 data() {
     return {
-        categorise:[]
+        categorise:[],
+        userinfo:{}
     }
 },
 methods: {
@@ -45,10 +46,34 @@ methods: {
     },
     getcategoryid(e){
         this.$router.push(`/category?id=${e}`)
+    },
+    async add(e){
+        var kee=true
+        for(let x of this.userinfo.shopping){
+            if(x.itemsid==e)
+            {
+            kee=false
+            }
+        }
+        if(kee){
+        this.userinfo.shopping.push({itemsid:e})
+        const rep=await this.$http.put('userinfo',this.userinfo)
+        // this.userinfo=rep.data
+        console.log(e)
+        }
+        
+    },
+    async fetchuserinfo(){
+        const rep=await this.$http.get(`userinfo?id=${sessionStorage.userid}`)
+        this.userinfo=rep.data
     }
 },
+computed:{
+    
+},
 created() {
-    this.fetchcategory()
+    this.fetchcategory(),
+    this.fetchuserinfo()
 },
 }
 </script>

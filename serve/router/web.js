@@ -40,6 +40,35 @@ module.exports = (app) => {
         const rep = await model.findById(id).populate({path:'items'}).lean()
         res.send(rep)
     })
+
+    route.get('/userinfo',async(req,res)=>{
+        const id=req.query.id
+        const model=require('../model/user')
+        const rep = await model.findById(id).populate('shopping').lean()
+        res.send(rep)
+    })
+
+    route.put('/userinfo',async(req,res)=>{
+        const id=req.body._id
+        const model=require('../model/user')
+        const rep = await model.findByIdAndUpdate(id, req.body)
+        res.send(rep)
+    })
     
+    route.get('/shoppinp',async(req,res)=>{
+    const id=req.query.id
+    const model=require('../model/user')
+    const model1=require('../model/item')
+        const rep = await model.findById(id).populate({ path: 'shopping.itemsid'}).lean()
+    res.send(rep)
+    })
+
+    route.put('/user',async(req,res)=>{
+        const model=require('../model/user')
+        const id=req.body._id
+        const rep=await model.findByIdAndUpdate(id,req.body)
+        res.send(rep)
+    })  
+
     app.use('/webapi', route)
 }

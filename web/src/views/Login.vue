@@ -93,7 +93,7 @@ export default {
               type: "success",
               message: "欢迎您" + this.model.username,
             });
-            await  this.$router.push("/home");
+            await  this.$router.replace("/home");
           } else {
             await  this.$alert("没输对", "好像......", {
               confirmButtonText: "重来",
