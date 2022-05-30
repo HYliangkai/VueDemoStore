@@ -63,10 +63,10 @@ module.exports=(app)=>{
         const upload = multer({
             storage: MAO({
                 config: {
-                    region: 'oss-cn-nanjing',
-                    accessKeyId: 'LTAI5tQbEtVpsYuG38t6kGDt',
-                    accessKeySecret: 'wuoxa5H2EINx8IYlXRz0aoUFmAZFNM',
-                    bucket: 'chzkysxj',
+                    region: ,
+                    accessKeyId: ,
+                    accessKeySecret: ,
+                    bucket: ,
                 }
             })
         });
